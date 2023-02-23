@@ -1,0 +1,29 @@
+package db
+
+import (
+	"context"
+	"testing"
+
+	"github.com/jbattistella/movieratings/utils"
+)
+
+func createRandomRating(t *testing.T) {
+	arg := CreateRatingParams{
+		Score: int32(utils.RandomRating()),
+	}
+
+	rating, err := testQueries.CreateRating(context.Background(), arg)
+	if err != nil {
+		t.Errorf("error creating rating: %v", err)
+	}
+
+	if rating.Score == 0 {
+		t.Errorf("got %v, wanted %v", rating.Score, arg.Score)
+	}
+}
+
+
+
+func testGetRating(t *testing.T) {
+
+}
