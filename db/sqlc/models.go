@@ -24,8 +24,8 @@ type Rating struct {
 }
 
 type User struct {
-	ID       int64       `json:"id"`
-	Username string      `json:"username"`
-	Password interface{} `json:"password"`
-	Email    string      `json:"email"`
+	ID       int64  `json:"id"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }

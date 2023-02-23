@@ -20,9 +20,9 @@ INSERT INTO users (
 `
 
 type CreateUserParams struct {
-	Username string      `json:"username"`
-	Password interface{} `json:"password"`
-	Email    string      `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, error) {

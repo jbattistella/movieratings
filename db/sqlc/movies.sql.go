@@ -45,13 +45,13 @@ func (q *Queries) CreateMovie(ctx context.Context, arg CreateMovieParams) (Movie
 	return i, err
 }
 
-const deleteAccount = `-- name: DeleteAccount :exec
+const deleteMovies = `-- name: DeleteMovies :exec
 DELETE FROM movies
 WHERE id = $1
 `
 
-func (q *Queries) DeleteAccount(ctx context.Context, id int64) error {
-	_, err := q.db.ExecContext(ctx, deleteAccount, id)
+func (q *Queries) DeleteMovies(ctx context.Context, id int64) error {
+	_, err := q.db.ExecContext(ctx, deleteMovies, id)
 	return err
 }
 

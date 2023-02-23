@@ -8,7 +8,6 @@ import (
 	"os/exec"
 	"testing"
 
-	db "github.com/jbattistella/movieratings/db/sqlc"
 	_ "github.com/lib/pq"
 
 	"github.com/golang-migrate/migrate/v4"
@@ -16,7 +15,8 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
-var testQueries *db.Queries
+var testQueries *Queries
+
 var testDB *sql.DB
 
 const (
@@ -37,7 +37,7 @@ func TestMain(m *testing.M) {
 	}
 
 	mig, err := migrate.New(
-		"file://migration",
+		"file://../migration",
 		dbSource)
 	if err != nil {
 		log.Fatal(err)
@@ -51,7 +51,7 @@ func TestMain(m *testing.M) {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	testQueries = db.New(testDB)
+	testQueries = New(testDB)
 
 	os.Exit(m.Run())
 
